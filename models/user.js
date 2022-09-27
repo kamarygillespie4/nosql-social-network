@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
-//TODO: require thought model
+//require thought model
+const thoughtSchema = require('./thought');
 
 // Schema to create Student model
 const userSchema = new Schema({
@@ -10,8 +11,8 @@ const userSchema = new Schema({
             required: true,
             //is unique
             unique: true,
-            //TODO: make trimmed
-            //
+            //make trimmed
+            trim: true,
         },
         email: {
             //is a string
@@ -22,9 +23,8 @@ const userSchema = new Schema({
             unique: true,
             //TODO: Must match a valid email address (look into Mongoose's matching validation)
         },
-        thoughts: {
-            //TODO: Array of _id values referencing the Thought model
-        },
+        //Array of _id values referencing the Thought model
+        thoughts: [thoughtSchema],
         friends: {
             //TODO:Array of _id values referencing the User model (self-reference)
         },
