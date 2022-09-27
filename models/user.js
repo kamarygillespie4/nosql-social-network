@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 //TODO: require thought model
 
 // Schema to create Student model
-const studentSchema = new Schema({
+const userSchema = new Schema({
         username: {
             //is a string
             type: String,
@@ -39,6 +39,6 @@ const studentSchema = new Schema({
 
 );
 
-const Student = model('student', studentSchema);
+const User = model('user', userSchema);
 
-module.exports = Student;
+module.exports = User;
