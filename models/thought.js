@@ -70,4 +70,5 @@ const reactionSchema = new Schema({
 //use thoughtSchema to build model called thought
 const Thought = model('thought', thoughtSchema);
 
-module.exports = Thought;
+
+module.exports = { Thought, reactionSchema };

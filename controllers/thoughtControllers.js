@@ -1,4 +1,6 @@
 const { Thought, User } = require('../models');
+// ObjectId() method for converting string into an ObjectId for querying database
+const { ObjectId } = require('mongoose').Types;
 // /api/thoughts
 module.exports = {
 
