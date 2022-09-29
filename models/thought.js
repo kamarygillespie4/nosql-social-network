@@ -1,7 +1,7 @@
 //destructer model and schema off of mongoose
 const { Schema, model, Types } = require('mongoose');
 
-//order is IMPORTANT!!! since reaction schema is refernced in the thought schema, it is important that the engine understands what reaction schema is before it is mentioned in the thought schema!!
+//order is IMPORTANT!!! since reaction schema is refrenced in the thought schema, it is important that the engine understands what reaction schema is before it is mentioned in the thought schema!!
 
 const reactionSchema = new Schema({
         reactionId: {
@@ -25,10 +25,10 @@ const reactionSchema = new Schema({
             required: true,
         },
         createdAt: {
-            //TODO:
-            //Date
             //Set default value to the current timestamp
             //Use a getter method to format the timestamp on query
+            type: Date,
+            default: Date.now,
         },
     }, {
         toJSON: {
@@ -50,10 +50,10 @@ const thoughtSchema = new Schema({
         maxlength: 280,
     },
     createdAt: {
-        //TODO:
-        //Date
         //Set default value to the current timestamp
         //Use a getter method to format the timestamp on query
+        type: Date,
+        default: Date.now,
     },
     username: {
         //The user that created this thought
@@ -76,8 +76,8 @@ const thoughtSchema = new Schema({
 thoughtSchema.virtual("reactionCount").get(function() {
     return this.reactions.length;
 });
+
 //use thoughtSchema to build model called thought
 const Thought = model('Thought', thoughtSchema);
-
 
 module.exports = Thought;
