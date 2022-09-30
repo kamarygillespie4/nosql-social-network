@@ -21,7 +21,6 @@ const userSchema = new Schema({
             required: true,
             //is unique
             unique: true,
-            //TODO: TEST
             //Must match a valid email address (look into Mongoose's matching validation)
             match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/]
         },
