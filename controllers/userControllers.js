@@ -57,14 +57,11 @@ module.exports = {
 
     //BONUS: Remove a user's associated thoughts when deleted.
     deleteUser(req, res) {
-        User.findOneAndDelete({ _id: req.params.userId })
-            .then((user) =>
-                !user ?
-                res.status(404).json({ message: 'No user with that ID' }) :
-                Thought.deleteMany({ _id: { $in: user.thoughts } })
-            )
-            .then(() => res.json({ message: 'User and thoughts deleted!' }))
-            .catch((err) => res.status(500).json(err));
+        User.findOneAndDelete({ _id: req.params.userId }).then((user) => !user ? res.status(404).json({ message: 'No user with that ID' }) : Thought.deleteMany({
+            _id: {
+                $in: user.thoughts
+            }
+        })).then(() => res.json({ message: 'User and associated thoughts deleted!' })).catch((err) => res.status(500).json(err));
     },
 
     ///api/users/:userId/friends/:friendId
